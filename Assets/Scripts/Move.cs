@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Move : MonoBehaviour
 {
@@ -11,10 +12,15 @@ public class Move : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        mainl = input.GetAxis("Horizontal");
+        mainl = Input.GetAxis("Horizontal");
 
         if (mainl < 0 && facingRight)
         {
@@ -30,5 +36,14 @@ public class Move : MonoBehaviour
     void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(mainl * speed, rb.linearVelocity.y);
+    }
+
+
+    void flip()
+    {
+        if(facingRight)
+        transform.localRotation = Quaternion.Euler(0,90,0);
+        else transform.localRotation = Quaternion.Euler(0,-90,0);
+        facingRight = !facingRight;
     }
 }
