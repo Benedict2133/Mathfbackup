@@ -6,6 +6,7 @@ public class input : MonoBehaviour
     [SerializeField] private float _movementSpeed = 5f;
     [SerializeField] private float _jumpHeight = 2f;
     [SerializeField] private float _gravity = -9.8f;
+    [SerializeField] private int lives;
     private float VelocityY;
     
 
@@ -43,6 +44,11 @@ public class input : MonoBehaviour
 
         velocity.y = VelocityY;
         controller.Move(velocity * Time.deltaTime);
+        
+    }
+
+    public void Playerdamage()
+    {
         
     }
 }
