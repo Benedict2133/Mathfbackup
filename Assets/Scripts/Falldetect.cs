@@ -12,7 +12,7 @@ public class Falldetect : MonoBehaviour
 
             if (player != null)
             {
-                player.Damage();
+            
             }
 
 
