@@ -1,0 +1,54 @@
+name: Game CI Pipeline # The name of the workflow that shows up in the Actions tab
+
+on:
+  push:
+    branches: [ "main", "develop" ] # Triggers on push to these branches
+  pull_request:
+    branches: [ "main", "develop" ] # Also runs when a PR is opened/updated against these branches
+
+jobs:
+  build:
+    name: Build Game for Windows 🎮
+    runs-on: ubuntu-latest # The virtual environment to run on
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        lfs: true # Crucial for games to fetch large assets (Git LFS)
+        fetch-depth: 0
+
+    - name: Cache Unity Library files
+      # Caching speeds up subsequent builds by reusing large files
+      uses: actions/cache@v4
+      with:
+        path: ${{ env.PROJECT_PATH }}/Library
+        key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+        restore-keys: |
+          Library-
+
+    - name: Activate Unity License
+      uses: game-ci/unity-activate@v4`
+      env:
+        UNITY_EMAIL: ${{ uiop74466@gmail.com }}
+        UNITY_PASSWORD: ${{ ASDasd3213 }}
+        # The unityVersion parameter is auto-detected from ProjectSettings/ProjectVersion.txt
+
+    - name: Run Unity Tests
+      uses: game-ci/unity-test-runner@v4
+      with:
+        # Run PlayMode and EditMode tests
+        testMode: both
+        artifactsPath: artifacts/test-results
+
+    - name: Build Project for Windows
+      uses: game-ci/unity-builder@v4
+      with:
+        targetPlatform: StandaloneWindows64
+        outputPath: build/windows # Where the build executable will be placed
+
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Windows-Build
+        path: build/windows
