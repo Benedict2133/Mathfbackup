@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class input : MonoBehaviour
 {
     private CharacterController controller;
