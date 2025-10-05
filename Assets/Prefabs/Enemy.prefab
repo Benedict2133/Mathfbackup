@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 404953959264407714}
   - component: {fileID: 8642949853605336479}
   - component: {fileID: 6338265668760915067}
+  - component: {fileID: 7889266390219917352}
+  - component: {fileID: 2269055405847514654}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +73,43 @@ MonoBehaviour:
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   Move: 0
-  enemy: {fileID: 0}
+  enemy: {fileID: 8642949853605336479}
+--- !u!114 &7889266390219917352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334297871506393119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 398f10fca778152468240264f8174c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Respawn: {fileID: 0}
+--- !u!136 &2269055405847514654
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334297871506393119}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.2541666
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.6270833, z: 0}
 --- !u!1001 &7837986868879292970
 PrefabInstance:
   m_ObjectHideFlags: 0

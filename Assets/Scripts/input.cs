@@ -57,14 +57,5 @@ public class input : MonoBehaviour
         {
             animator.SetTrigger("Jumping");
         }
-    
-
-    }
-    
-
-
-    public void Playerdamage()
-    {
-
     }
 }
