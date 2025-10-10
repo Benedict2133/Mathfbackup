@@ -14,7 +14,7 @@ public class EnemyAI2 : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    // Update is called once per frame this is for pathfinding for enemies
     void Update()
     {
         if (Move == true)
